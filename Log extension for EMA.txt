@@ -1,5 +1,3 @@
-
-  
 // © Filip Woziwodzki use as you want, would be nice to give some credit.
 
 //Script can help to determine HTF momentum and STF overextension of the market.
