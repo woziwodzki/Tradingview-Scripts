@@ -1,3 +1,5 @@
+
+  
 // © Filip Woziwodzki use as you want, would be nice to give some credit.
 
 //Script can help to determine HTF momentum and STF overextension of the market.
@@ -7,7 +9,7 @@
 study("Log Extension from EMA")
 
 base_period1 = 20
-base_period2 = 35
+base_period2 = 25
 base_period3 = 50
 
 //EMA declaration
@@ -36,3 +38,5 @@ plot(log(madivergence)*2, style=area, color = green)
 plot(0, color=white)
 plot(1.5, color=red)
 plot(-1.5, color=green)
+//ploting RSI(c,14)
+plot(((rsi(close,14)-50)/20), linewidth = 1, color = red)
