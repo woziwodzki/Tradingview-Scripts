@@ -1,4 +1,7 @@
 // © Filip Woziwodzki use as you want, would be nice to give some credit.
+
+Script can help to determine HTF momentum and STF overextension of the market.
+Designed for crypto market to use for weekly timeframes. (Other timeframes work as well, but overextension zones don't apply)
 //@version=2
 
 study("Log Extension from EMA")
