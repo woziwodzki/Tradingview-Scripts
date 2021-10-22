@@ -1,8 +1,9 @@
-// © Filip Woziwodzki - use as you want, would be nice to give some credit.
+//https://www.tradingview.com/script/7hhdFjDc-Log-Extension-from-EMA-EMA-Divergence-RSI/     - Script on TradingView
+//@version=4
+// © Based77 - use as you want, would be nice to give some credit.
 
 //Script can help to determine HTF momentum and STF overextension of the market.
 //Designed for crypto market to use for weekly timeframes. (Other timeframes work as well, but overextension zones don't apply)
-//@version=2
 
 study("Log Extension from EMA")
 
@@ -11,30 +12,30 @@ base_period2 = 25
 base_period3 = 50
 
 //EMA declaration
-ma1=ema(close,base_period1)
-ma2=ema(close,base_period2)
-ma3=ema(close,base_period3)
+ma1 = ema(close, base_period1)
+ma2 = ema(close, base_period2)
+ma3 = ema(close, base_period3)
 
 // "Distance" as the logarithmic ratio of close price and EMA
-distance1 = log(close/ma1)
-distance2 = log(close/ma2)
-distance3 = log(close/ma3)
-
-//Ploting the 3 close/EMA ratios
-plot(distance1,color=yellow, linewidth = 1)
-plot(distance2,color=blue, linewidth = 2)
-plot(distance3,color=white, linewidth = 3)
+distance1 = log(close / ma1)
+distance2 = log(close / ma2)
+distance3 = log(close / ma3)
 
 //MA divergence - ratio between two different period EMAs
-madivergence = ma1/ma2
+madivergence = ma1 / ma2
 
 //ploting the logarithmic EMA divergence as "area" multiplied by 2 (to make it look better on chart)
-plot(log(madivergence)*2, style=area, color = green)
+plot(log(madivergence) * 4, style=plot.style_area, color=color.green)
+
+//Ploting the 3 close/EMA ratios
+plot(distance1, color=color.yellow, linewidth=1)
+plot(distance2, color=color.blue, linewidth=2)
+plot(distance3, color=color.white, linewidth=3)
 
 
 //ploting the overextension zones and midrange
-plot(0, color=white)
-plot(1.5, color=red)
-plot(-1.5, color=green)
+plot(0, color=color.white)
+plot(1.5, color=color.red)
+plot(-1.5, color=color.green)
 //ploting RSI(c,14)
-plot(((rsi(close,14)-50)/20), linewidth = 1, color = red)
+plot((rsi(close, 14) - 50) / 20, linewidth=1, color=color.red)
