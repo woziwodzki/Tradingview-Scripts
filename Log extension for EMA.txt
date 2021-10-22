@@ -1,4 +1,4 @@
-// © Filip Woziwodzki use as you want, would be nice to give some credit.
+// © Based77 - use as you want, would be nice to give some credit.
 
 //Script can help to determine HTF momentum and STF overextension of the market.
 //Designed for crypto market to use for weekly timeframes. (Other timeframes work as well, but overextension zones don't apply)
@@ -28,7 +28,7 @@ plot(distance3,color=white, linewidth = 3)
 //MA divergence - ratio between two different period EMAs
 madivergence = ma1/ma2
 
-//ploting the logarithmic divergence as "area" multiplied by 2 (to make it look better on chart)
+//ploting the logarithmic EMA divergence as "area" multiplied by 2 (to make it look better on chart)
 plot(log(madivergence)*2, style=area, color = green)
 
 
