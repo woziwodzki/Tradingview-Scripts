@@ -1,0 +1,31 @@
+//@version=4
+// © Based77 - use as you want, would be nice to give some credit.
+
+//RFR (risk free return calculation + plot)
+
+study("RAR data")
+
+Xvolatility = input(2, title="Exp. risk variable")
+RFR = 0
+smoothing = input(10, title="Output smoothing avrage")
+period = input(20,minval=1)
+mean = sma(close, period)
+risk = stdev(close, period) / mean
+return = ((close / close[period]) -1)
+RAR = (return-RFR) / pow(risk, Xvolatility)
+RARSMA = sma(RAR, smoothing)
+
+var table RARdata = table.new(position.top_right, 2, 4, bgcolor = color.gray, frame_width = 2, frame_color = color.black)
+table.cell(RARdata,0,0,"Retrun:")
+table.cell(RARdata,0,1,"Risk:")
+table.cell(RARdata,0,2,"RAR:")
+table.cell(RARdata,0,3,"RARs:")
+
+table.cell(RARdata,1,0,tostring(round(return*100)/100))
+table.cell(RARdata,1,1,tostring(round(risk*1000)/1000))
+table.cell(RARdata,1,2,tostring(round(RAR*100)/100))
+table.cell(RARdata,1,3,tostring(round(RARSMA*100)/100))
+
+plot(RAR, color=color.navy)
+plot(RARSMA, color=color.red,linewidth=4)
+
