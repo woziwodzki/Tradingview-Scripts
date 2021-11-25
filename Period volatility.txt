@@ -1,0 +1,11 @@
+// © based77
+
+//@version=4
+study("Period volatility")
+period = input(20, title="period", minval=1)
+smperiod = input(20, title="smoothing period", minval=1)
+stdev = (stdev(close, period)*100)/close
+stdevsmoothed = sma(stdev, smperiod)
+
+plot(stdev, color=color.red, linewidth=2)
+plot(stdevsmoothed, color=color.white)
